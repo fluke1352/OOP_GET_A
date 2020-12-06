@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import java.awt.*;
 
 /**
  *
@@ -6,7 +7,7 @@ import javax.swing.JFrame;
  *
  */
 public class map {
-    public static final int w = 790, h = 500; //Attributes ที่เป็นตัวตั้งค่า ขนาด Jframe
+    public static final int w = 814, h = 500; //Attributes ที่เป็นตัวตั้งค่า ขนาด Jframe
     
     public map() {
         JFrame fr = new JFrame("พันถุ์เสือ");
@@ -14,6 +15,8 @@ public class map {
         fr.setResizable(false); // กำหนดให้ไม่สามารถขยาย หน้าต่างเกมได้
         fr.setDefaultCloseOperation(fr.EXIT_ON_CLOSE);
         fr.setLocationRelativeTo(null); // กำหนดให้ Jframe อยู่ตรงกลางหน้าจอ
+//        fr.setPreferredSize(new Dimension(w, h));
+//        fr.getContentPane().setBackground(Color.BLACK);
         fr.add(new MacGame()); // สร้าง class MacGame
         fr.setVisible(true);
     }

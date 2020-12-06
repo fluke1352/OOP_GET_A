@@ -22,7 +22,6 @@ public class image {
     
     public image(){
         try {
-//            System.out.println("A");
             macmap = ImageIO.read(getClass().getResource("image/macmap.png"));
             ghostleft = ImageIO.read(getClass().getResource("image/left.png"));
             ghostright = ImageIO.read(getClass().getResource("image/right.png"));
