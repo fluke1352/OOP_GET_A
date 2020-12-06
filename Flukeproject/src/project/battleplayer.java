@@ -46,6 +46,7 @@ public class battleplayer extends JPanel implements KeyListener{
                 this.x += 10;
             }
             g2d.drawImage(pic, this.x, this.y, 100, 100, this);
+            
             if(stack == 1){
                 this.kx += 10;
                 

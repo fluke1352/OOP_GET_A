@@ -8,19 +8,21 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.*;
+import static project.battleplayer.stack;
 import static project.image.flukeboss;
 
 public class battleboss extends JPanel {
 
-    public int x, y, prex, prey, n;
+    public int x, y, prex, prey, n, kx, ky, stack = 0;
     image img;
-    public int stackx = 0, stacky = 0;
-    BufferedImage pic = img.flukeboss;
+    public int stackx = 0, stacky = 0, mili = 0;
+    BufferedImage pic = img.flukeboss, bskame = img.bskame;
 
     public battleboss(int x, int y) {
         img = new image();
         this.x = x;
         this.y = y;
+        
 //        this.addKeyListener(this);
     }
 
@@ -31,10 +33,11 @@ public class battleboss extends JPanel {
     public void update() {
         Random rand = new Random();
         int n = rand.nextInt(10);
-//        this.y = n * 1;
-//        battlemap.;
-//        System.out.println(n);
-
+        this.mili += 10;
+        if (this.mili == 500) {
+            kame();
+        }
+        this.y = n*41;
 //        if(n % 2 == 0){
 //            this.y += n*2;
 //        }
@@ -44,7 +47,7 @@ public class battleboss extends JPanel {
     }
 
     public void draw(Graphics2D g2d) {
-//        System.out.println(x + "," +y);
+        System.out.println(mili);
 //        g2d.drawImage(pic, this.x, this.y, 40, 40, this);
 
         if (this.y < 0) {
@@ -55,11 +58,34 @@ public class battleboss extends JPanel {
         }
 //            System.out.println(n);
         if (this.x == battleplayer.kx && this.y == battleplayer.ky) {
-                System.out.println("eiei");
+            System.out.println("eiei");
         }
         g2d.drawImage(pic, this.x, this.y, 250, 250, this);
+        
+        if (this.stack == 1) {
+            this.kx -= 70;
+
+            
+            if (this.kx < 0) {
+                this.kx = 1000;
+                this.stack = 0;
+                this.mili = 0;
+            }
+            g2d.drawImage(bskame, this.kx, this.ky, 150, 150, this);
+        }
+
+        
 
 //        System.out.println("aaaa");
+    }
+    
+    public void kame(){
+            stack = 1;
+            this.kx = this.x;
+            this.ky = this.y;
+//            this.kx = this.x;
+            System.out.println("kamekamaha");
+        
     }
 
 }
