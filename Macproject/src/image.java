@@ -19,7 +19,7 @@ public class image {
     public static BufferedImage ghostright;
     public static BufferedImage ghosttop;
     public static BufferedImage ghostdown;
-    
+    public static BufferedImage endgame;
     public image(){
         try {
             macmap = ImageIO.read(getClass().getResource("image/macmap.png"));
@@ -27,7 +27,7 @@ public class image {
             ghostright = ImageIO.read(getClass().getResource("image/right.png"));
             ghosttop = ImageIO.read(getClass().getResource("image/top.png"));
             ghostdown = ImageIO.read(getClass().getResource("image/down.png"));
-            
+            endgame = ImageIO.read(getClass().getResource("image/EndGame.png"));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
