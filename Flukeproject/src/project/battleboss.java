@@ -13,7 +13,7 @@ import static project.image.flukeboss;
 
 public class battleboss extends JPanel {
 
-    public int x, y, prex, prey, n, kx, ky, stack = 0;
+    public int x, y, prex, prey, n = 1, kx, ky, stack = 0;
     image img;
     public int stackx = 0, stacky = 0, mili = 0;
     BufferedImage pic = img.flukeboss, bskame = img.bskame;
@@ -31,13 +31,13 @@ public class battleboss extends JPanel {
     }
 
     public void update() {
-        Random rand = new Random();
-        int n = rand.nextInt(10);
+//        Random rand = new Random();
+//        int n = rand.nextInt(10);
         this.mili += 10;
-        if (this.mili == 500) {
+        if (this.mili == 700) {
             kame();
         }
-        this.y = n*41;
+//        this.y = n*41;
 //        if(n % 2 == 0){
 //            this.y += n*2;
 //        }
@@ -49,12 +49,14 @@ public class battleboss extends JPanel {
     public void draw(Graphics2D g2d) {
         System.out.println(mili);
 //        g2d.drawImage(pic, this.x, this.y, 40, 40, this);
-
+        this.y += 10*n;
         if (this.y < 0) {
             this.y = 0;
+            n = 1;
         }
-        if (this.y > 500) {
-            this.y = 500;
+        if (this.y > 400) {
+            this.y = 400;
+            n = -1;
         }
 //            System.out.println(n);
         if (this.x == battleplayer.kx && this.y == battleplayer.ky) {
@@ -63,7 +65,7 @@ public class battleboss extends JPanel {
         g2d.drawImage(pic, this.x, this.y, 250, 250, this);
         
         if (this.stack == 1) {
-            this.kx -= 70;
+            this.kx -= 40;
 
             
             if (this.kx < 0) {

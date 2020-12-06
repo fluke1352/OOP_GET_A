@@ -36,19 +36,19 @@ public class battleplayer extends JPanel implements KeyListener{
     public void draw(Graphics2D g2d){
 //        System.out.println(x + "," +y);
 //        g2d.drawImage(pic, this.x, this.y, 40, 40, this);
-            if(this.y == 10){
-                this.y += 10;
+            if(this.y < 10){
+                this.y += 15;
             }
-            if(this.y == 540){
-                this.y -= 10;
+            if(this.y > 540){
+                this.y -= 15;
             }
             if(this.x < 10){
-                this.x += 10;
+                this.x += 15;
             }
             g2d.drawImage(pic, this.x, this.y, 100, 100, this);
             
             if(stack == 1){
-                this.kx += 10;
+                this.kx += 15;
                 
                 g2d.drawImage(kame, this.kx, this.ky, 100, 100, this);
                 if(this.kx == 900){
@@ -70,14 +70,14 @@ public class battleplayer extends JPanel implements KeyListener{
             pic = img.ghosttop;
 //            System.out.println(stackx + "a"+ stacky);
                 System.out.println(x + "," +y);
-                this.y -= 10;
+                this.y -= 15;
         }
 
 
         if (e.getKeyCode() == KeyEvent.VK_S) {
             pic = img.ghostdown;
                 System.out.println(x + "," +y);
-                this.y += 10;
+                this.y += 15;
 
         }
 
