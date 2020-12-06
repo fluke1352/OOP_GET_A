@@ -21,9 +21,10 @@ import javax.swing.JPanel;
 public class Flukebattle extends JPanel{
     public static final int w = 1000, h = 700;
     Flukebattleplayer py;
+    public static JFrame fr;
     
     public Flukebattle(){
-    JFrame fr = new JFrame("Battle");
+     fr = new JFrame("Battle");
         fr.add(new Flukebattlemap());
         fr.setSize(w,h);
         fr.setResizable(false);

@@ -23,6 +23,8 @@ public class Flukebattlemap extends JPanel implements ActionListener {
     Flukebattleplayer py;
     Flukebattleboss bs;
     image img;
+    Health hb;
+    bossHealth bh;
     public Timer loop;
 
 
@@ -32,8 +34,10 @@ public class Flukebattlemap extends JPanel implements ActionListener {
         loop.start();
         img = new image();
 //        py = new FlukedPlayer(15, 750);
-        py = new Flukebattleplayer(10, 500);
+        py = new Flukebattleplayer(10, 200);
         bs = new Flukebattleboss(700, 200);
+        hb = new Health(6);
+        bh = new bossHealth(10);
         addKeyListener(py);
         setFocusable(true);
     }
@@ -49,6 +53,8 @@ public class Flukebattlemap extends JPanel implements ActionListener {
         bs.update();
         py.draw(g2);
         bs.draw(g2);
+        hb.draw(g2);
+        bh.draw(g2);
 
     }
 
