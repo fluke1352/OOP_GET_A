@@ -34,7 +34,7 @@ public class Flukebattlemap extends JPanel implements ActionListener {
         loop.start();
         img = new image();
 //        py = new FlukedPlayer(15, 750);
-        py = new Flukebattleplayer(10, 500);
+        py = new Flukebattleplayer(10, 200);
         bs = new Flukebattleboss(700, 200);
         hb = new Health(6);
         bh = new bossHealth(10);

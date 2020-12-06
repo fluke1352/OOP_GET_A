@@ -49,7 +49,7 @@ public class Flukebattleboss extends JPanel {
         Random rand = new Random();
         int v = rand.nextInt(10);
         
-        this.y += 10*n*v*0.5;
+        this.y += 10*n*v*0.35;
         
         if (this.y < 0) {
             this.y = 0;
