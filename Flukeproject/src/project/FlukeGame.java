@@ -29,8 +29,8 @@ public class FlukeGame extends JPanel implements ActionListener {
         loop = new Timer(10, this);
         loop.start();
         img = new image();
-        py = new FlukePlayer(15, 750);
-//        py = new player(200, 200);
+//        py = new FlukePlayer(15, 750);
+        py = new FlukePlayer(250, 200);
         addKeyListener(py);
         setFocusable(true);
     }
@@ -41,6 +41,9 @@ public class FlukeGame extends JPanel implements ActionListener {
         super.paint(g); //To change body of generated methods, choose Tools | Templates.
         Graphics2D g2 = (Graphics2D) g;
 //        image img = new image();
+        if(map.stack == 1){
+            g.dispose();
+        }
         g2.drawImage(img.flukemap, 0, 0, 800, 800, null);
         py.draw(g2);
 

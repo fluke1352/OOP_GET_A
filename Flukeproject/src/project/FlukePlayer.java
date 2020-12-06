@@ -114,6 +114,11 @@ public class FlukePlayer extends JPanel implements KeyListener {
         if(x >= 705 && y == 115){
             y += 5;
         }
+        if(y == 120){
+            new battle();
+            map.fr.dispose();
+
+        }
 
 
         else{

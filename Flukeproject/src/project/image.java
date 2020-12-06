@@ -18,8 +18,8 @@ public class image {
     public static BufferedImage flukemap;
     public static BufferedImage ghostleft;
     public static BufferedImage ghostright;
-    public static BufferedImage ghosttop;
-    public static BufferedImage ghostdown;
+    public static BufferedImage ghosttop, flukeboss;
+    public static BufferedImage ghostdown, map, kame;
     
     public image(){
         try {
@@ -29,6 +29,9 @@ public class image {
             ghostright = ImageIO.read(getClass().getResource("image/right.png"));
             ghosttop = ImageIO.read(getClass().getResource("image/top.png"));
             ghostdown = ImageIO.read(getClass().getResource("image/down.png"));
+            map =  ImageIO.read(getClass().getResource("image/bg.png"));
+            flukeboss = ImageIO.read(getClass().getResource("image/Ultrainstinct.png"));
+            kame = ImageIO.read(getClass().getResource("image/kame.png"));
             
         } catch (Exception ex) {
             ex.printStackTrace();

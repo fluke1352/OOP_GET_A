@@ -13,9 +13,11 @@ import javax.swing.JFrame;
  */
 public class map {
     public static final int w = 820, h = 849;
-    
+    public static int stack = 0;
+    public static JFrame fr;
+
     public map() {
-        JFrame fr = new JFrame("พันถุ์เสือ");
+        fr = new JFrame("พันถุ์เสือ");
 //        fr = new JFrame();
         fr.add(new FlukeGame());
         fr.setSize(w,h);
@@ -23,6 +25,7 @@ public class map {
         fr.setDefaultCloseOperation(fr.EXIT_ON_CLOSE);
         fr.setLocationRelativeTo(null);
         fr.setVisible(true);
+
         
     }
 }
