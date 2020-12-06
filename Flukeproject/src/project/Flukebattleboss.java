@@ -13,7 +13,7 @@ import static project.image.flukeboss;
 
 public class Flukebattleboss extends JPanel {
 
-    public int x, y, prex, prey, n = 1, kx, ky, stack = 0;
+    public static int x, y, prex, prey, n = 1, kx, ky, stack = 0;
     image img;
     public int stackx = 0, stacky = 0, mili = 0;
     BufferedImage pic = img.flukeboss, bskame = img.bskame;
@@ -30,9 +30,7 @@ public class Flukebattleboss extends JPanel {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void update() {
-//        Random rand = new Random();
-//        int n = rand.nextInt(10);
+    public void update() { 
         this.mili += 10;
         if (this.mili == 700) {
             kame();
@@ -48,8 +46,11 @@ public class Flukebattleboss extends JPanel {
 
     public void draw(Graphics2D g2d) {
         System.out.println(mili);
-//        g2d.drawImage(pic, this.x, this.y, 40, 40, this);
-        this.y += 10*n;
+        Random rand = new Random();
+        int v = rand.nextInt(10);
+        
+        this.y += 10*n*v*0.35;
+        
         if (this.y < 0) {
             this.y = 0;
             n = 1;
@@ -75,8 +76,8 @@ public class Flukebattleboss extends JPanel {
             }
             g2d.drawImage(bskame, this.kx, this.ky, 150, 150, this);
         }
-
         
+        checkhit();
 
 //        System.out.println("aaaa");
     }
@@ -88,6 +89,20 @@ public class Flukebattleboss extends JPanel {
 //            this.kx = this.x;
             System.out.println("kamekamaha");
         
+    }
+     public Rectangle HitBoxBoss(){
+        return new Rectangle(x,y,250,250);
+    }
+     public static Rectangle getBossBulletBounds() {
+        return new Rectangle(kx, ky, 100, 100);
+    }
+    
+    public void checkhit(){
+         if (HitBoxBoss().intersects(Flukebattleplayer.getBulletBounds())){
+                Flukebattleplayer.kx = 1200;
+                bossHealth.damage--;
+                System.out.println("playerยิงบอส");
+            }
     }
 
 }

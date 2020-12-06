@@ -10,12 +10,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
-public class Flukebattleplayer extends JPanel implements KeyListener{
-    public static int x, y, prex,prey, stack, kx, ky;
+public class Flukebattleplayer extends JPanel implements KeyListener {
+
+    public static int x, y, prex, prey, stack, kx, ky;
     image img;
     public int stackx = 0, stacky = 0;
     BufferedImage pic = img.ghostright, kame = img.kame;
-    
+    Health hb;
+    sound sound;
 
     public Flukebattleplayer(int x, int y) {
         img = new image();
@@ -28,35 +30,35 @@ public class Flukebattleplayer extends JPanel implements KeyListener{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void update(){
+    public void update() {
 //        this.x += 20;
-        
+
     }
 
-    public void draw(Graphics2D g2d){
+    public void draw(Graphics2D g2d) {
 //        System.out.println(x + "," +y);
 //        g2d.drawImage(pic, this.x, this.y, 40, 40, this);
-            if(this.y < 10){
-                this.y += 15;
+        if (this.y < 10) {
+            this.y += 15;
+        }
+        if (this.y > 540) {
+            this.y -= 15;
+        }
+        if (this.x < 10) {
+            this.x += 15;
+        }
+        g2d.drawImage(pic, this.x, this.y, 100, 100, this);
+
+        if (stack == 1) {
+            this.kx += 15;
+
+            g2d.drawImage(kame, this.kx, this.ky, 100, 100, this);
+            if (this.kx >= 900) {
+                this.kx = 0;
+                stack = 0;
             }
-            if(this.y > 540){
-                this.y -= 15;
-            }
-            if(this.x < 10){
-                this.x += 15;
-            }
-            g2d.drawImage(pic, this.x, this.y, 100, 100, this);
-            
-            if(stack == 1){
-                this.kx += 15;
-                
-                g2d.drawImage(kame, this.kx, this.ky, 100, 100, this);
-                if(this.kx == 900){
-                    this.kx = 0;
-                    stack = 0;
-                }
-            }
-            
+        }
+        checkhit();
 
 //        System.out.println("aaaa");
     }
@@ -69,18 +71,16 @@ public class Flukebattleplayer extends JPanel implements KeyListener{
         if (e.getKeyCode() == KeyEvent.VK_W) {
             pic = img.ghosttop;
 //            System.out.println(stackx + "a"+ stacky);
-                System.out.println(x + "," +y);
-                this.y -= 15;
+            System.out.println(x + "," + y);
+            this.y -= 15;
         }
-
 
         if (e.getKeyCode() == KeyEvent.VK_S) {
             pic = img.ghostdown;
-                System.out.println(x + "," +y);
-                this.y += 15;
+            System.out.println(x + "," + y);
+            this.y += 15;
 
         }
-
 
 //        if (e.getKeyCode() == KeyEvent.VK_A) {
 //            pic = img.ghostleft;
@@ -98,17 +98,32 @@ public class Flukebattleplayer extends JPanel implements KeyListener{
             stack = 1;
             pic = img.ghostright;
             this.ky = this.y;
+
 //            this.kx = this.x;
             System.out.println("kamekamaha");
         }
     }
 
-
-
-
     public void keyReleased(KeyEvent e) {
 
     }
 
+    public static Rectangle getBulletBounds() {
+        return new Rectangle(kx, ky, 100, 100);
+    }
 
-  }
+    public static Rectangle HitBoxPlayer() {
+        return new Rectangle(x, y, 100, 100);
+    }
+
+    public void checkhit() {
+        if (HitBoxPlayer().intersects(Flukebattleboss.getBossBulletBounds())) {
+            Flukebattleboss.kx = -20;
+            Health.damage--;
+            System.out.println("บอสยิงโดนplayer");
+//            new sound("sound/die.wav");
+
+        }
+    }
+
+}
