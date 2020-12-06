@@ -36,11 +36,16 @@ public class MacGame extends JPanel implements ActionListener {
         super.paint(g); //To change body of generated methods, choose Tools | Templates.
         Graphics2D g2 = (Graphics2D) g;
         image img = new image(); //(1) สร้าง class ที่ไว้สร้าง img ที่ใช้สำหรับ map, ตัวละคร
-        g2.setBackground(Color.BLACK);
+
+        /**
+         * DrawImage เป็นส่วนที่ในการวาด map ลงไป และก็ปรับขนาดเป็น 1500 x 1500 เพือที่จะได้ขนาดที่มีการ zoom เข้าไปใน map
+         * - camX : เป็นการ set มุมกล้องตามฉากต่างๆ
+         * - camY : เป็นการ set มุมกล้องตามฉากต่างๆ
+         *      โดยใช้ method setcamara() กับ CheckPosition() เป็นตัวดูการเครื่องไหว
+         */
         g2.drawImage(img.macmap, this.camX, this.camY, 1500, 1500, this);
 
         user.draw(g2,this); // method ของ Player ที่ไว้วาดรูปตัวละคร เริ่มต้น, เวลาเดิน, และกำหนดมุมกล้อง
-        g2.dispose();
 
     }
 
@@ -54,6 +59,7 @@ public class MacGame extends JPanel implements ActionListener {
 
     }
 
+    // เป็นการบอกว่าใน map มีท้้งหมด 10 ฉาก แล้วก็ทำการ set ค่า X,Y ของแต่ละฉากไว้ใน method นี้
     public void setcamara(){
         if (this.locationCam == 0){
             this.camX = 0;
@@ -101,7 +107,14 @@ public class MacGame extends JPanel implements ActionListener {
         }
     }
 
+    // method นี้เป็นการเช็กตำแหน่งของ Player ว่าเดินมาถึงในจุดที่ต้องทำการเปรียนฉากยัง
     public void CheckPosition(MacPlayer user){
+        /**
+         * if(ฉากที่ user อยู่ในปัจจุบัน)
+         *      if(ถึง X,Y ที่เป็นตำแหน่งเปรียนฉาก)
+         *          ให้เปรียนเป็นฉากที่ (n)
+         *          set จุดเริ่มต้นของฉาก
+         */
         if(locationCam == 0){
             if(user.getX() >= 744 & (user.getY() <= 180 && user.getY() >= 132)){
                 this.setLocationCam(1);
