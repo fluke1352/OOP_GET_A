@@ -20,6 +20,8 @@ public class image {
     public static BufferedImage ghostright;
     public static BufferedImage ghosttop, flukeboss;
     public static BufferedImage ghostdown, map, kame, bskame;
+    public static BufferedImage heart;
+    public static BufferedImage bossheart;
     
     public image(){
         try {
@@ -33,6 +35,8 @@ public class image {
             flukeboss = ImageIO.read(getClass().getResource("image/Ultrainstinct.png"));
             kame = ImageIO.read(getClass().getResource("image/kame.png"));
             bskame = ImageIO.read(getClass().getResource("image/bskame.png"));
+            heart = ImageIO.read(getClass().getResource("image/heart.png"));
+            bossheart = ImageIO.read(getClass().getResource("image/bossheart.png"));
             
         } catch (Exception ex) {
             ex.printStackTrace();
