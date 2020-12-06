@@ -30,9 +30,7 @@ public class Flukebattleboss extends JPanel {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void update() {
-//        Random rand = new Random();
-//        int n = rand.nextInt(10);
+    public void update() { 
         this.mili += 10;
         if (this.mili == 700) {
             kame();
@@ -48,8 +46,11 @@ public class Flukebattleboss extends JPanel {
 
     public void draw(Graphics2D g2d) {
         System.out.println(mili);
-//        g2d.drawImage(pic, this.x, this.y, 40, 40, this);
-        this.y += 10*n;
+        Random rand = new Random();
+        int v = rand.nextInt(10);
+        
+        this.y += 10*n*v*0.5;
+        
         if (this.y < 0) {
             this.y = 0;
             n = 1;
