@@ -17,9 +17,9 @@ public class EndGame extends JFrame{
         exitGame = new JButton("Exit");
         JLayeredPane pane = getLayeredPane();
 
-        newGame.setBounds(200, 300, 100, 50);
+        newGame.setBounds(200, 400, 100, 50);
         newGame.setBackground(Color.LIGHT_GRAY);
-        exitGame.setBounds(500, 300, 100, 50);
+        exitGame.setBounds(500, 400, 100, 50);
         exitGame.setBackground(Color.LIGHT_GRAY);
         img.setBounds(0, 0, w, h);
         setLocationRelativeTo(null);
