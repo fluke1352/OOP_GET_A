@@ -44,7 +44,7 @@ public class Macbattlemap extends JPanel implements ActionListener {
         super.paint(g); //To change body of generated methods, choose Tools | Templates.
         Graphics2D g2 = (Graphics2D) g;
 //        image img = new image();
-        g2.drawImage(img.map, 0, 0, 1000, 700, null);
+        g2.drawImage(img.macMap, 0, 0, 1000, 700, null);
         py.update();
         bs.update();
         py.draw(g2);

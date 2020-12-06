@@ -11,7 +11,7 @@ public class Macbattleboss extends JPanel {
     public static int x, y, prex, prey, n = 1, kx, ky, stack = 0;
     image img;
     public int stackx = 0, stacky = 0, mili = 0;
-    BufferedImage pic = img.macboss, bskame = img.bskame;
+    BufferedImage pic = img.macBoss, bskame = img.bskame;
 
     public Macbattleboss(int x, int y) {
         img = new image();
