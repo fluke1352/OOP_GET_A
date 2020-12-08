@@ -8,16 +8,21 @@ import java.util.*;
 
 public class Battle_Boss extends JPanel {
     private useSound us;
+    private int index;
+    private Random rand;
+    private BufferedImage bskame;
     public static int x, y, prex, prey, n = 1, kx, ky, stack = 0;
     image img;
     public int stackx = 0, stacky = 0, mili = 0;
-    BufferedImage pic = img.boss_5, bskame = img.bskame_1;
+    BufferedImage pic = img.boss_5;
 
     public Battle_Boss(int x, int y, useSound us) {
-        img = new image();
         this.x = x;
         this.y = y;
         this.us = us;
+
+        img = new image();
+        rand = new Random();
     }
 
     public void update() { 
@@ -57,10 +62,12 @@ public class Battle_Boss extends JPanel {
     }
     
     public void kame(){
-            stack = 1;
-            this.kx = this.x;
-            this.ky = this.y;
-            us.bossATK();
+        index = rand.nextInt(img.list_bskame.size() - 1);
+        bskame = img.list_bskame.get(index);
+        stack = 1;
+        this.kx = this.x;
+        this.ky = this.y;
+        us.bossATK();
     }
      public Rectangle HitBoxBoss(){
         return new Rectangle(x,y,250,250);

@@ -19,6 +19,6 @@ public class Battle extends JPanel{
         fr.setDefaultCloseOperation(fr.EXIT_ON_CLOSE);
         fr.setLocationRelativeTo(null);
         fr.setVisible(true);
-        us.backGround3();
+        us.backGround2();
     }
 }
