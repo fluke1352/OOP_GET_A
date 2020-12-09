@@ -23,6 +23,7 @@ public class SelectRandom extends JFrame implements MouseListener {
     public static final int w = 814, h = 500;
     private ImageIcon unknown;
     private JLabel img, map, welcome;
+    public static Battle mainGame = new Battle();
 
     public SelectRandom() {
         setSize(w, h);
@@ -69,6 +70,7 @@ public class SelectRandom extends JFrame implements MouseListener {
     public void mousePressed(java.awt.event.MouseEvent me) {
        if (me.getSource().equals(img)){
 
+           dispose();
        }
     }
 

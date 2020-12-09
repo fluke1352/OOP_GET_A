@@ -10,17 +10,18 @@ public class Battle_Boss extends JPanel {
     private useSound us;
     private int index;
     private Random rand;
-    private BufferedImage bskame;
+    private BufferedImage bskame, pic;
+    private int a, b;
+
     public static int x, y, prex, prey, n = 1, kx, ky, stack = 0;
     image img;
     public int stackx = 0, stacky = 0, mili = 0;
-    BufferedImage pic = img.boss_5;
 
-    public Battle_Boss(int x, int y, useSound us) {
+    public Battle_Boss(int x, int y, useSound us, BufferedImage boss) {
         this.x = x;
         this.y = y;
         this.us = us;
-
+        this.pic = boss;
         img = new image();
         rand = new Random();
     }
@@ -35,7 +36,7 @@ public class Battle_Boss extends JPanel {
     public void draw(Graphics2D g2d) {
         Random rand = new Random();
         int v = rand.nextInt(10);
-        
+
         this.y += 10*n*v*0.35;
         
         if (this.y < 0) {

@@ -1,6 +1,6 @@
 package project;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /*
@@ -101,6 +101,10 @@ public class Healthboss {
         }else if(damage == 0){
             Battle.fr.dispose();
             us.stop();
+            Battle.count_map++;
+            Battle_Map.img.list_map.remove(Battle_Map.index_map);
+            Battle_Map.img.list_boss.remove(Battle_Map.index_boss);
+            SelectRandom.mainGame.setVisible(true);
         }
     }
 }

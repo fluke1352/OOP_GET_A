@@ -17,36 +17,62 @@ import javax.swing.*;
  * @author Fluke
  */
 public class Battle_Map extends JPanel implements ActionListener {
-    private int index;
+    public static int index_map, index_boss;
     Battle_Player py;
     Battle_Boss bs;
-    image img = new image();
+    public static image img = new image();
     HealthPlayer hb;
     Healthboss bh;
     public Timer loop;
 
 
-
-
-    public Battle_Map(useSound us){
+    public Battle_Map(useSound us, int count){
+        Random rand = new Random();
+        index_map = rand.nextInt(img.list_map.size()-1);
+        index_boss = rand.nextInt(img.list_boss.size()-1);
         loop = new Timer(10, this);
         loop.start();
-        py = new Battle_Player(10, 200, us);
-        bs = new Battle_Boss(700, 200, us);
-        hb = new HealthPlayer(6, us);
-        bh = new Healthboss(10 , us);
+        if (count == 1){
+            py = new Battle_Player(10, 200, us);
+            bs = new Battle_Boss(700, 200, us, img.list_boss.get(index_boss));
+            hb = new HealthPlayer(6, us);
+            bh = new Healthboss(10 , us);
+        }
+        else if(count == 2){
+            py = new Battle_Player(10, 200, us);
+            bs = new Battle_Boss(700, 200, us, img.list_boss.get(index_boss));
+            hb = new HealthPlayer(6, us);
+            bh = new Healthboss(10 , us);
+        }else if(count == 3){
+            py = new Battle_Player(10, 200, us);
+            bs = new Battle_Boss(700, 200, us, img.list_boss.get(index_boss));
+            hb = new HealthPlayer(6, us);
+            bh = new Healthboss(10 , us);
+        }else if(count == 4){
+            py = new Battle_Player(10, 200, us);
+            bs = new Battle_Boss(700, 200, us, img.list_boss.get(index_boss));
+            hb = new HealthPlayer(6, us);
+            bh = new Healthboss(10 , us);
+        }else if(count == 5){
+            py = new Battle_Player(10, 200, us);
+            bs = new Battle_Boss(700, 200, us, img.list_boss.get(index_boss));
+            hb = new HealthPlayer(6, us);
+            bh = new Healthboss(10 , us);
+        }else{
+            //หน้าจบ
+        }
+
         addKeyListener(py);
         setFocusable(true);
 
-        Random rand = new Random();
-        index = rand.nextInt(img.list_map.size()-1);
+
     }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g); //To change body of generated methods, choose Tools | Templates.
         Graphics2D g2 = (Graphics2D) g;
-        g2.drawImage(img.list_map.get(index), 0, 0, 1000, 700, null);
+        g2.drawImage(img.list_map.get(index_map), 0, 0, 1000, 700, null);
         bs.update();
         py.draw(g2);
         bs.draw(g2);
